@@ -1,8 +1,14 @@
-import { createGlobalStyle, GlobalStyleComponent } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     :root {
       --background: #f0f2f5;
+      --color-button: #ffffffcc;
+      --color-button-hover: #ffffff;
+      --color-button-disabled: #fff;
+      --background-button: #b4980daa;
+      --background-button-hover:#b4980dff;
+      --background-button-disabled:#000;
     }
 
    * {
@@ -38,5 +44,28 @@ export const GlobalStyle = createGlobalStyle`
       opacity: 0.6;
       cursor: not-allowed;
     }
+
+    .fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}
+
+.invalid-feedback {
+  font-size: 0.75rem;
+  color: #dc3545;
+}
 
 `;

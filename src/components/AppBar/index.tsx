@@ -5,5 +5,5 @@ interface Props {
 }
 
 export function AppBar(props: Props) {
-  return <AppBar>{props.children}</AppBar>;
+  return <Appbar>{props.children}</Appbar>;
 }

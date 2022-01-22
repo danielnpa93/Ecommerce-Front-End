@@ -7,7 +7,7 @@ export function EcommerceMain(props: ReduxProps) {
   const { orders, onListOrders, onLogout } = props || {};
 
   React.useEffect(() => {
-    onListOrders();
+    // onListOrders();
     console.log(orders);
   }, []);
 

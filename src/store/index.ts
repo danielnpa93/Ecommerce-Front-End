@@ -13,7 +13,7 @@ export default function configureStore() {
   const history = createBrowserHistory();
 
   const store = createStore(
-    reducers,
+    reducers(history),
     composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware))
   );
 

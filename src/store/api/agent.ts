@@ -52,7 +52,7 @@ export const users = {
     password: string;
     confirmPassword: string;
   }): Promise<ResponseEnvelope<User>> =>
-    requests.post(urls.ASYNC_CREATE_USER, body),
+    requests.post('https:localhost:5001/api/v1/user/create', body),
 };
 
 export const auth = {
