@@ -4,9 +4,9 @@ import { getType } from 'typesafe-actions';
 import { orders } from '../api/agent';
 import { handleError, Notification } from 'utils/notifications';
 
-function* getOrders() {
+function* getOrders({ payload }: any) {
   try {
-    const response = yield call(orders.list, {});
+    const response = yield call(orders.list, payload);
     yield put(ordersActions.list.success(response));
   } catch (error: any) {
     if (error.status === 401) {

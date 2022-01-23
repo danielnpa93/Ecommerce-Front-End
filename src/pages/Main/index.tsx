@@ -7,6 +7,7 @@ import { EcommerceMain } from './main';
 
 const mapStateToProps = (state: RootState) => ({
   orders: state.orders,
+  isLoading: Boolean(state.orders?.isLoading),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

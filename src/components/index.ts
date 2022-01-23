@@ -4,3 +4,4 @@ export { Input } from './Input';
 export { Modal } from './Modal';
 export { Skeleton } from './Skeleton';
 export { Table } from './Table';
+export { Pagination } from './Pagination';

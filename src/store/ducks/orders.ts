@@ -17,7 +17,7 @@ const ordersActions = {
     OrderConstants.LIST_REQUEST,
     OrderConstants.LIST_SUCCESS,
     OrderConstants.LIST_FAILURE
-  )<void, OrderState, ErrorMessage>(),
+  )<{ limit: number; offset: number }, OrderState, ErrorMessage>(),
 };
 
 type OrdersActionType = ActionType<typeof ordersActions>;

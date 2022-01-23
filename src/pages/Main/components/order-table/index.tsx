@@ -6,6 +6,7 @@ import { TableButton } from './styles';
 
 interface IProps {
   orders: Order[];
+  isLoading?: boolean;
 }
 
 const getHead = (width: number) => {
@@ -115,12 +116,13 @@ const getData = (data: Order[]) => {
   }));
 };
 
-export function OrderTable({ orders }: IProps) {
+export function OrderTable({ orders, isLoading }: IProps) {
   const { width = 0 } = useWindowSize();
 
   return (
     <div style={{ width: '100%' }}>
       <Table
+        isLoading={Boolean(isLoading)}
         header={getHead(width)}
         items={getData(orders)}
         emptyMessage="No orders to show"

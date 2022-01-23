@@ -38,7 +38,7 @@ const errorMessage = (response: AxiosError) =>
 const requests = {
   get: (url: string, params = {}, headers?: any) =>
     api
-      .get(url, { ...params, ...baseHeaders(headers) })
+      .get(url, { params: { ...params }, ...baseHeaders(headers) })
       .then(responseBody)
       .catch(errorMessage),
   post: (url: string, body: any, headers?: any) =>

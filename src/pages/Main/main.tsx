@@ -1,23 +1,32 @@
 import React from 'react';
 import { ReduxProps } from '.';
-import { MainContainer } from 'components/MainContainer';
-import { AppContent } from 'components/Content';
+import { Container, Content } from './styles';
 import { AppBar } from './components/app-bar';
 import { OrderTable } from './components/order-table';
+import { Pagination } from 'components';
 
 export function EcommerceMain(props: ReduxProps) {
-  const { orders, onListOrders, onLogout } = props || {};
+  const { orders, isLoading, onListOrders, onLogout } = props || {};
+
+  const handleListOrder = page => {
+    onListOrders({ limit: 5, offset: page });
+  };
 
   React.useEffect(() => {
-    onListOrders();
+    onListOrders({ limit: 5, offset: 1 });
   }, []);
 
   return (
-    <MainContainer>
+    <Container>
       <AppBar onLogout={onLogout} />
-      <AppContent>
-        <OrderTable orders={orders.data || []} />
-      </AppContent>
-    </MainContainer>
+      <Content>
+        <OrderTable isLoading={isLoading} orders={orders.data || []} />
+        <Pagination
+          totalPages={orders?.totalPages || 1}
+          currentPage={orders?.currentPage || 1}
+          onChange={handleListOrder}
+        />
+      </Content>
+    </Container>
   );
 }
