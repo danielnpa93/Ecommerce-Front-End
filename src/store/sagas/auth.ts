@@ -1,15 +1,17 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { authActions } from '../ducks/auth';
 import { getType } from 'typesafe-actions';
-import { auth } from '../api/agent';
+import { auth, api } from '../api/agent';
 import { handleError } from 'utils/notifications';
 
 function* login({ payload }: any) {
-  debugger;
   try {
     const {
       data: { token },
     } = yield call(auth.login, payload);
+
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
     yield put(authActions.login.success({ token }));
   } catch (error: any) {
     handleError(error?.message);

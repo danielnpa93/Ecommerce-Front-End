@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
       --background-button: #b4980daa;
       --background-button-hover:#b4980dff;
       --background-button-disabled:#b4980d88;
+      --border-color: rgba(0, 0, 0, 0.12);
     }
 
    * {

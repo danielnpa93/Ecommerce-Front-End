@@ -1,11 +1,11 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
-import { Auth, OrderState, ResponseEnvelope, User } from '../typing';
+import axios, { AxiosResponse, AxiosError } from 'axios';
+import { Auth, ResponseEnvelope, User } from '../typing';
 import { urls } from './urls';
 import { store } from '../';
 import { authActions } from '../ducks/auth';
 import { errorResponse } from 'utils/ErrorResponse';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: '',
   timeout: 600000,
 });
@@ -29,9 +29,11 @@ const baseHeaders = (othersHeaders = {}) => ({
   },
 });
 
-const responseBody = (response: AxiosResponse) => response.data;
+const responseBody = (response: AxiosResponse) =>
+  Promise.resolve(response.data);
 
-const errorMessage = response => Promise.reject(errorResponse(response));
+const errorMessage = (response: AxiosError) =>
+  Promise.reject(errorResponse(response));
 
 const requests = {
   get: (url: string, params = {}, headers?: any) =>
