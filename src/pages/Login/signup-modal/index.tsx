@@ -3,7 +3,6 @@ import { modalStyles, SignUpForm, FormControl, buttonStyles } from './styles';
 import { handleError, Notification } from 'utils/notifications';
 import { users } from 'store/api/agent';
 import { useWindowSize } from 'hooks/windowSize';
-import { errorResponse } from 'utils/ErrorResponse';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 

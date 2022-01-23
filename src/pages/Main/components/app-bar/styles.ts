@@ -5,6 +5,9 @@ export const Appbar = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  color: #fff;
+  padding: 0px 15px;
+  justify-content: space-between;
 `;
 
 export const LogoutButton = styled.button`

@@ -7,6 +7,7 @@ export const Container = styled.div`
   grid-template-areas:
     'header'
     'content';
+  grid-template-rows: min-content 1fr;
 `;
 
 export const Content = styled.div`
