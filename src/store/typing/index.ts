@@ -41,6 +41,7 @@ export interface User {
 
 export interface Auth {
   token?: string;
+  isLoading?: boolean;
 }
 
 export interface ErrorMessage {

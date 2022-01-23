@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
       --color-button-disabled: #fff;
       --background-button: #b4980daa;
       --background-button-hover:#b4980dff;
-      --background-button-disabled:#000;
+      --background-button-disabled:#b4980d88;
     }
 
    * {
@@ -64,7 +64,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 .invalid-feedback {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #dc3545;
 }
 

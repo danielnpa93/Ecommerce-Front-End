@@ -78,8 +78,8 @@ export const LoginBox = styled.div`
     margin-bottom: 40px;
   }
 
-  form > input {
-    margin-bottom: 20px;
+  form {
+    width: 100%;
   }
 `;
 
@@ -95,4 +95,8 @@ export const RegisterButton = styled.button`
   :hover {
     font-weight: 500;
   }
+`;
+
+export const FormControl = styled.div`
+  height: 65px;
 `;

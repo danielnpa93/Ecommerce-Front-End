@@ -53,10 +53,10 @@ export function SignUp(props: IProps) {
 
           try {
             await users.create({ username, password, confirmPassword });
-            onClose();
             Notification('success', 'User created successfully!');
+            setTimeout(() => onClose(), 200);
           } catch (error: any) {
-            handleError(errorResponse(error).message);
+            handleError(error.message);
           } finally {
             actions.setSubmitting(false);
           }

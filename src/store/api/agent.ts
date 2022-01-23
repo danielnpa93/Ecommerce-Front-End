@@ -1,8 +1,9 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import { Auth, OrderState, ResponseEnvelope, User } from '../typing';
 import { urls } from './urls';
 import { store } from '../';
 import { authActions } from '../ducks/auth';
+import { errorResponse } from 'utils/ErrorResponse';
 
 const api = axios.create({
   baseURL: '',
@@ -30,15 +31,29 @@ const baseHeaders = (othersHeaders = {}) => ({
 
 const responseBody = (response: AxiosResponse) => response.data;
 
+const errorMessage = response => Promise.reject(errorResponse(response));
+
 const requests = {
   get: (url: string, params = {}, headers?: any) =>
-    api.get(url, { ...params, ...baseHeaders(headers) }).then(responseBody),
+    api
+      .get(url, { ...params, ...baseHeaders(headers) })
+      .then(responseBody)
+      .catch(errorMessage),
   post: (url: string, body: any, headers?: any) =>
-    axios.post(url, body, baseHeaders(headers)).then(responseBody),
+    axios
+      .post(url, body, baseHeaders(headers))
+      .then(responseBody)
+      .catch(errorMessage),
   delete: (url: string, headers?: any) =>
-    axios.delete(url, baseHeaders(headers)).then(responseBody),
+    axios
+      .delete(url, baseHeaders(headers))
+      .then(responseBody)
+      .catch(errorMessage),
   put: (url: string, body: any, headers?: any) =>
-    axios.put(url, body, baseHeaders(headers)).then(responseBody),
+    axios
+      .put(url, body, baseHeaders(headers))
+      .then(responseBody)
+      .catch(errorMessage),
 };
 
 export const orders = {
@@ -52,7 +67,7 @@ export const users = {
     password: string;
     confirmPassword: string;
   }): Promise<ResponseEnvelope<User>> =>
-    requests.post('https:localhost:5001/api/v1/user/create', body),
+    requests.post(urls.ASYNC_CREATE_USER, body),
 };
 
 export const auth = {

@@ -1,4 +1,4 @@
-const ecommerceApi = process.env.APP_API_ECOMMERCE;
+const ecommerceApi = process.env.REACT_APP_API_ECOMMERCE;
 
 export const urls = {
   LOGIN: `${ecommerceApi}/api/v1/auth/login`,
