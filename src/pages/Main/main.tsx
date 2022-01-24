@@ -8,6 +8,7 @@ import { TeamChart } from './components/chart';
 import { Order, TeamDetails } from 'store/typing';
 import { pallet } from 'utils/pallets';
 import { OrderDetails } from './components/order-details';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const getData = (teams: TeamDetails[]) => {
   var firstDate = new Date(
@@ -57,12 +58,19 @@ export function EcommerceMain(props: ReduxProps) {
 
   return (
     <>
-      {orderDetails && (
-        <OrderDetails
-          onClose={() => setOrderDetails(undefined)}
-          order={orderDetails}
-        />
-      )}
+      <ReactCSSTransitionGroup
+        transitionName="fade"
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
+      >
+        {orderDetails && (
+          <OrderDetails
+            onClose={() => setOrderDetails(undefined)}
+            order={orderDetails}
+          />
+        )}
+      </ReactCSSTransitionGroup>
+
       <Container>
         <AppBar onLogout={onLogout} />
         <Content>

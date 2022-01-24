@@ -33,10 +33,17 @@ export const options = {
   },
 };
 
-const getDimensions = (width, maxWidth, aspectRatio) => {
+const getDimensions = (width, maxWidth, minHeight, aspectRatio) => {
   var newWidth = Math.min(width, maxWidth);
 
   var newHeight = newWidth / aspectRatio;
+
+  if (newHeight < minHeight) {
+    return {
+      newWidth: minHeight * aspectRatio,
+      newHeight: minHeight,
+    };
+  }
 
   return {
     newWidth,
@@ -47,7 +54,7 @@ const getDimensions = (width, maxWidth, aspectRatio) => {
 export function TeamChart({ data }) {
   const { width = 0 } = useWindowSize();
 
-  var { newWidth, newHeight } = getDimensions(width - 200, 500, 4 / 3);
+  var { newWidth, newHeight } = getDimensions(width - 200, 500, 250, 4 / 3);
 
   return (
     <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>

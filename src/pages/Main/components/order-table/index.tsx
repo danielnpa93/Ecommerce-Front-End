@@ -63,13 +63,13 @@ const getHead = (width: number) => {
   }
 
   return [
-    {
-      value: 'order id',
-      id: 'id',
-      options: {
-        align: 'initial',
-      },
-    },
+    // {
+    //   value: 'order id',
+    //   id: 'id',
+    //   options: {
+    //     align: 'initial',
+    //   },
+    // },
     {
       value: 'team',
       id: 'deliveryTeam',
@@ -77,13 +77,13 @@ const getHead = (width: number) => {
         align: 'end',
       },
     },
-    {
-      value: 'created',
-      id: 'createdAt',
-      options: {
-        align: 'end',
-      },
-    },
+    // {
+    //   value: 'created',
+    //   id: 'createdAt',
+    //   options: {
+    //     align: 'end',
+    //   },
+    // },
     {
       value: 'delivery',
       id: 'deliveryDate',
@@ -123,7 +123,7 @@ export function OrderTable({ orders, isLoading, onOpenOrderDetails }: IProps) {
   };
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%', overflow: 'auto' }}>
       <Table
         isLoading={Boolean(isLoading)}
         header={getHead(width)}

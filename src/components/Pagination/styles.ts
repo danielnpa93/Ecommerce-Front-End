@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.ul<{ active?: boolean }>`
+export const Container = styled.ul`
   display: flex;
   list-style-type: none;
   justify-content: end;
