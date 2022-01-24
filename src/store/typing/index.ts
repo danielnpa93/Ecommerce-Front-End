@@ -1,9 +1,21 @@
 export interface RootState {
   orders: OrderState;
   auth: AuthState;
+  teams: TeamsState;
 }
 
 export type AuthState = Auth;
+
+export interface TeamsState {
+  isLoading?: boolean;
+  data: TeamDetails[];
+}
+
+export interface TeamDetails extends Team {
+  ordersCount: number;
+  firstDateTime: string;
+  lastDateTime: string;
+}
 
 export interface OrderState {
   isLoading?: boolean;

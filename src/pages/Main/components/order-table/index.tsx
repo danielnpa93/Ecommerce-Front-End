@@ -7,6 +7,7 @@ import { TableButton } from './styles';
 interface IProps {
   orders: Order[];
   isLoading?: boolean;
+  onOpenOrderDetails(order: Order): void;
 }
 
 const getHead = (width: number) => {
@@ -97,27 +98,29 @@ const getHead = (width: number) => {
   ];
 };
 
-const getData = (data: Order[]) => {
-  return data.map(d => ({
-    id: d.id,
-    createdAt: getTimeString(d.createdAt),
-    deliveryDate: getTimeString(d.deliveryDate),
-    adress: d.adress,
-    deliveryTeam: d.deliveryTeam.name,
-    product: d.products.reduce(
-      (acc, cur, i) => (i !== 0 ? acc + ', ' + cur.name : cur.name),
-      ''
-    ),
-    action: (
-      <span>
-        <TableButton>Show more</TableButton>
-      </span>
-    ),
-  }));
-};
-
-export function OrderTable({ orders, isLoading }: IProps) {
+export function OrderTable({ orders, isLoading, onOpenOrderDetails }: IProps) {
   const { width = 0 } = useWindowSize();
+
+  const getData = (data: Order[]) => {
+    return data.map(d => ({
+      id: d.id,
+      createdAt: getTimeString(d.createdAt),
+      deliveryDate: getTimeString(d.deliveryDate),
+      adress: d.adress,
+      deliveryTeam: d.deliveryTeam.name,
+      product: d.products.reduce(
+        (acc, cur, i) => (i !== 0 ? acc + ', ' + cur.name : cur.name),
+        ''
+      ),
+      action: (
+        <span>
+          <TableButton onClick={() => onOpenOrderDetails(d)}>
+            Show more
+          </TableButton>
+        </span>
+      ),
+    }));
+  };
 
   return (
     <div style={{ width: '100%' }}>

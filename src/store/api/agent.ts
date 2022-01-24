@@ -63,6 +63,10 @@ export const orders = {
     requests.get(urls.ASYNC_GET_ORDER_LIST, query),
 };
 
+export const deliveryTeams = {
+  list: (): Promise<any> => requests.get(urls.ASYNC_GET_DELIVERY_TEAM_LIST),
+};
+
 export const users = {
   create: (body: {
     username: string;

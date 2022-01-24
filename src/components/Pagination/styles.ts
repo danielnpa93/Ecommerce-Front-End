@@ -30,9 +30,9 @@ export const List = styled.li<{ active?: boolean }>`
     border-bottom-right-radius: 5px;
   }
 
-  :hover {
+  /* :hover {
     background: rgba(0, 0, 0, 0.12);
-  }
+  } */
 
   button {
     border: none;

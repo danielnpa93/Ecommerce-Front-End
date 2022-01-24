@@ -10,7 +10,7 @@ export function Pagination({ totalPages, currentPage, onChange }: IProps) {
   const render = () => {
     if (totalPages < 6) {
       return Array.from(Array(totalPages).keys()).map(k => (
-        <Li active={currentPage === k + 1}>
+        <Li key={k} active={currentPage === k + 1}>
           <button onClick={() => onChange(k + 1)}>{k + 1}</button>
         </Li>
       ));
@@ -39,7 +39,7 @@ export function Pagination({ totalPages, currentPage, onChange }: IProps) {
       );
     } else {
       previous = Array.from(Array(currentPage).keys()).map(k => (
-        <Li active={currentPage === k + 1}>
+        <Li key={k} active={currentPage === k + 1}>
           <button onClick={() => onChange(k + 1)}>{k + 1}</button>
         </Li>
       ));
@@ -63,7 +63,7 @@ export function Pagination({ totalPages, currentPage, onChange }: IProps) {
       );
     } else {
       next = Array.from(Array(totalPages - currentPage).keys()).map(k => (
-        <Li>
+        <Li key={k}>
           <button onClick={() => onChange(k + currentPage + 1)}>
             {k + currentPage + 1}
           </button>
